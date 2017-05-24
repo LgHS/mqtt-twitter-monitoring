@@ -50,24 +50,9 @@ for tweet in tweet_iter:
         print('NEW FOLLOWER "{}"'.format(tweet['source']['name']))
         print()
         
-        publish.multiple(
-            [
-                {'topic': config['green_light'], 'payload': '1'},
-                {'topic': config['red_light'], 'payload': '1'},
-            ],
-            
-            hostname=config['mqtt_hostname'],
-            port=config['mqtt_port']
-        )
-        
-        time.sleep(2)
-        
-        publish.multiple(
-            [
-                {'topic': config['green_light'], 'payload': '0'},
-                {'topic': config['red_light'], 'payload': '0'},
-            ],
-            
+        publish.single(
+            config['blink'],
+            '2',
             hostname=config['mqtt_hostname'],
             port=config['mqtt_port']
         )

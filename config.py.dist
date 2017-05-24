@@ -17,6 +17,7 @@ mqtt_hostname = 'your.mqttserver.com'
 mqtt_port = 4444
 
 mention_monitore = 'your_username_to_monitore'
+track = '#hash1,#hash2'
 
 green_light = '/your_topic_for_green_light'
 red_light = '/your_topic_for_red_light'
