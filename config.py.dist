@@ -16,6 +16,8 @@ access_secret = “XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx”
 mqtt_hostname = 'your.mqttserver.com'
 mqtt_port = 4444
 
+mention_monitore = 'your_username_to_monitore'
+
 green_light = '/your_topic_for_green_light'
 red_light = '/your_topic_for_red_light'
 blink = '/your_topic_for_blinking'

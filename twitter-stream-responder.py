@@ -73,11 +73,14 @@ for tweet in tweet_iter:
         )
     
     if 'entities' in tweet:
-        print('MENTION')
+        mentions = (mention['screen_name'] for mention in tweet['entities']['user_mentions'])
         
-        publish.single(
-            config['blink'],
-            '2',
-            hostname=config['mqtt_hostname'],
-            port=config['mqtt_port']
-        )
+        if config['mention_monitore'] in mentions:            
+            print('MENTION')
+            
+            publish.single(
+                config['blink'],
+                '2',
+                hostname=config['mqtt_hostname'],
+                port=config['mqtt_port']
+            )
