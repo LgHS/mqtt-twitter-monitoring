@@ -29,6 +29,7 @@ auth = OAuth(
 stream = TwitterStream(auth=auth, secure=True)
 tweet_iter = stream.statuses.filter(track=config['track'])
 
+
 for tweet in tweet_iter:
     time.sleep(1)
     
@@ -36,7 +37,11 @@ for tweet in tweet_iter:
         print(tweet['text'])
     except UnicodeEncodeError:
         # Failsafe for Windows :)
-        print('Can\'t print that!')
+        print("Can't print that!")
+    except KeyError:
+	print("[Warning] Doesn't contain a 'text' metadata. Skipping")
+
+	continue
     
     if config['track'].split(',')[0] in tweet['text'].lower():
         print('GREEN')
